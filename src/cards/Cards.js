@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
 import { connect } from 'react-redux';
 
 class Cards extends Component {
 
 	get cardsList() {
 		return this.props.cards.map(card =>
-			<div>{card.name}</div>
+			<Link to={`/cards/${card.id}`}>{card.name}</Link>
 		)
 	}
 
@@ -14,6 +15,7 @@ class Cards extends Component {
 			<div>
 				Cards Page
 				{this.cardsList}
+				{this.props.children}
 			</div>
 		)
 	}
