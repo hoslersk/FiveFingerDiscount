@@ -5,9 +5,13 @@ import { connect } from 'react-redux';
 class Cards extends Component {
 
 	get cardsList() {
-		return this.props.cards.map(card =>
-			<Link to={`/cards/${card.id}`}>{card.name}</Link>
-		)
+		if (this.props.cards) {
+			return this.props.cards.map(card =>
+				<Link key={card.id} to={`/cards/${card.id}`}>{card.name}</Link>
+			)
+		}
+
+		return null
 	}
 
 	render() {
@@ -23,7 +27,7 @@ class Cards extends Component {
 
 export default connect(
 	(state) => {
-		const cards = state
+		const cards = state.cards
 		return {
 			cards,
 		}
