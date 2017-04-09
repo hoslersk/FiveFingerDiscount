@@ -15,3 +15,19 @@ export function fetchCardDetail(params){
     payload: cards,
   }
 }
+
+export function fetchGames(){
+  const games = fetch(`${BASE_URL}games`).then((response) => {return response.json()}).then((gamesPayload) => {return gamesPayload})
+  return {
+    type: 'FETCH_GAMES',
+    payload: games,
+  }
+}
+
+export function fetchGameDetail(params){
+  const games = fetch(`${BASE_URL}games/${params}`).then((response) => {return response.json()}).then((gamesPayload) => {return gamesPayload})
+  return {
+    type: 'FETCH_GAME_DETAIL',
+    payload: games,
+  }
+}
