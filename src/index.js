@@ -4,12 +4,15 @@ import { Router, browserHistory } from 'react-router'
 import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise'
 import { Provider } from 'react-redux';
-import cardsReducer from './reducers';
-import { fetchCards } from './actions'
+import rootReducer from './reducers';
+import { fetchCards,fetchGames } from './actions'
 import Routes from './routes'
 
-const store = createStore(cardsReducer, applyMiddleware(ReduxPromise));
+const store = createStore(rootReducer, applyMiddleware(ReduxPromise));
 store.dispatch( fetchCards() );
+store.dispatch( fetchGames() );
+
+
 
 ReactDOM.render(
 	<Provider store={store}>
