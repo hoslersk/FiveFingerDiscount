@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { fetchCardDetail } from '../actions'
 
 class CardDetail extends Component {
-
-	// componentDidMount() {
-	// 	this.props.fetchCardDetail(this.props.params.id)
-	// }
 
 	get cardInfo() {
 
@@ -36,4 +31,4 @@ export default connect(
 			card,
 		}
 	},
-{/* fetchCardDetail */})(CardDetail)
+{})(CardDetail)

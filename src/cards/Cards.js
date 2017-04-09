@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
-// import { fetchCards } from '../actions'
 
 class Cards extends Component {
-
-	// componentWillMount() {
-	// 	fetchCards()
-	// }
-	// componentDidMount() {
-	// 	fetchCards()
-	// }
 
 	get cardsList() {
 		if (this.props.cards) {
@@ -35,8 +27,7 @@ class Cards extends Component {
 
 export default connect(
 	(state) => {
-		const cards = state.cards // ? state.cards : []
-		// debugger
+		const cards = state.cards
 		return {
 			cards,
 		}
