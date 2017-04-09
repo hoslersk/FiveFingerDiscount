@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
+// import { fetchCards } from '../actions'
 
 class Cards extends Component {
 
+	// componentWillMount() {
+	// 	fetchCards()
+	// }
+	// componentDidMount() {
+	// 	fetchCards()
+	// }
+
 	get cardsList() {
-		return this.props.cards.map(card =>
-			<Link to={`/cards/${card.id}`}>{card.name}</Link>
-		)
+		if (this.props.cards) {
+			return this.props.cards.map(card =>
+				<Link key={card.id} to={`/cards/${card.id}`}>{card.name}</Link>
+			)
+		}
+
+		return null
 	}
 
 	render() {
@@ -23,7 +35,8 @@ class Cards extends Component {
 
 export default connect(
 	(state) => {
-		const cards = state
+		const cards = state.cards // ? state.cards : []
+		// debugger
 		return {
 			cards,
 		}

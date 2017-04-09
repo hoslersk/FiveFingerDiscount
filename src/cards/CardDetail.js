@@ -1,32 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCardDetail } from '../actions'
+// import { fetchCardDetail } from '../actions'
 
 class CardDetail extends Component {
 
-	constructor(props) {
-		super(props)
-
-	}
-
-	componentDidMount() {
-		this.props.fetchCardDetail(this.props.params.id)
-	}
+	// componentDidMount() {
+	// 	this.props.fetchCardDetail(this.props.params.id)
+	// }
 
 	get cardInfo() {
-		if (this.props.cards.length > 15) {
 
-			return (
-				<ul>
-					<li>{this.props.cards[this.props.params.id-2].name}</li>
-					<li>{this.props.cards[this.props.params.id-2].rank}</li>
-					<li>{this.props.cards[this.props.params.id-2].description}</li>
-					<li>{this.props.cards[this.props.params.id-2].action}</li>
-				</ul>
-			)
-		}
-
-		return null
+		return (
+			<ul>
+				<li>{this.props.card.name}</li>
+				<li>{this.props.card.rank}</li>
+				<li>{this.props.card.description}</li>
+				<li>{this.props.card.action}</li>
+			</ul>
+		)
 	}
 
 	render() {
@@ -39,11 +30,10 @@ class CardDetail extends Component {
 }
 
 export default connect(
-	(state) => {
-		// debugger
-		const cards = state
+	(state, ownProps) => {
+		const card = state.cards.find(card => card.id == ownProps.params.id)
 		return {
-			cards,
+			card,
 		}
 	},
-{ fetchCardDetail })(CardDetail)
+{/* fetchCardDetail */})(CardDetail)
