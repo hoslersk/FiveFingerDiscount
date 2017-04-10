@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
+import Placemat from './components/Placemat'
 import './App.css';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
 				{this.cardsLink}
 				{this.gamesLink}
         {this.props.children}
+				<Placemat />
       </div>
     );
   }
